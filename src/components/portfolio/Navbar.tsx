@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { navItems, site } from "@/data/site";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/logo.png.asset.json";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -60,14 +59,9 @@ export function Navbar() {
           className="group flex items-center gap-2.5"
           onClick={() => setOpen(false)}
         >
-          <img
-            src={logoAsset.url}
-            alt="Ananthu K Santhosh cybersecurity logo"
-            width={40}
-            height={40}
-            className="size-8 sm:size-9 object-contain transition-transform duration-300 group-hover:scale-105"
-            loading="eager"
-          />
+          <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-display text-base font-bold transition-transform duration-300 group-hover:scale-105 sm:size-9 sm:text-lg">
+            A
+          </div>
           <span className="hidden font-display text-sm font-semibold tracking-tight sm:block">
             Ananthu K Santhosh
           </span>
