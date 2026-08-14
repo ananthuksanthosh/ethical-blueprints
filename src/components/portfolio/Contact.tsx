@@ -6,61 +6,6 @@ import { site } from "@/data/site";
 
 export function Contact() {
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
-
-    // Honeypot: bots fill hidden fields.
-    if (String(data.get("company") ?? "") !== "") return;
-
-    const parsed = contactSchema.safeParse({
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      subject: String(data.get("subject") ?? ""),
-      message: String(data.get("message") ?? ""),
-    });
-
-    if (!parsed.success) {
-      const nextErrors: FieldErrors = {};
-      parsed.error.issues.forEach((issue) => {
-        const key = issue.path[0] as keyof FieldErrors;
-        if (!nextErrors[key]) nextErrors[key] = issue.message;
-      });
-      setErrors(nextErrors);
-      return;
-    }
-
-    setErrors({});
-
-    if (!contactFormEndpoint) {
-      toast.info("Message form isn't connected yet", {
-        description: site.email
-          ? `In the meantime, email ${site.email}.`
-          : "Please reach out on LinkedIn or GitHub in the meantime.",
-      });
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      const response = await fetch(contactFormEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(parsed.data),
-      });
-      if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
-      form.reset();
-      toast.success("Message sent", { description: "Thanks — I'll get back to you soon." });
-    } catch {
-      toast.error("Message could not be sent", {
-        description: "Please try again, or reach out on LinkedIn.",
-      });
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   return (
     <section id="contact" className="scroll-mt-24 border-t border-border/60 py-20 sm:py-28">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
