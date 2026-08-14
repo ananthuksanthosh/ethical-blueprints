@@ -10,7 +10,7 @@
  */
 
 export const formspreeFormId: string = (
-  (import.meta.env["VITE_FORMSPREE_FORM_ID"] as string | undefined) ?? ""
+  (import.meta.env["VITE_FORMSPREE_FORM_ID"] as string | undefined) ?? "mvkpqddj"
 ).trim();
 
 export const isFormspreeConfigured = formspreeFormId.length > 0;
