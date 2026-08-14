@@ -60,9 +60,14 @@ export function Navbar() {
           className="group flex items-center gap-2.5"
           onClick={() => setOpen(false)}
         >
-          <span className="flex size-8 items-center justify-center rounded-md border border-primary/40 bg-primary/10 font-display text-sm font-bold text-primary">
-            A
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="Ananthu K Santhosh cybersecurity logo"
+            width={40}
+            height={40}
+            className="size-8 sm:size-9 object-contain transition-transform duration-300 group-hover:scale-105"
+            loading="eager"
+          />
           <span className="hidden font-display text-sm font-semibold tracking-tight sm:block">
             Ananthu K Santhosh
           </span>
