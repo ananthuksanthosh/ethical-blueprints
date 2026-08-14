@@ -1,35 +1,10 @@
-import { useState, type FormEvent } from "react";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
-import { z } from "zod";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { ResumeActions } from "./ResumeActions";
-import { contactFormEndpoint, site } from "@/data/site";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(2, "Please enter your name").max(100, "Name is too long"),
-  email: z
-    .string()
-    .trim()
-    .email("Please enter a valid email address")
-    .max(255, "Email is too long"),
-  subject: z.string().trim().min(3, "Please add a subject").max(150, "Subject is too long"),
-  message: z
-    .string()
-    .trim()
-    .min(10, "Please write at least 10 characters")
-    .max(2000, "Message is too long"),
-});
-
-type FieldErrors = Partial<Record<keyof z.infer<typeof contactSchema>, string>>;
+import { ContactForm } from "./ContactForm";
+import { site } from "@/data/site";
 
 export function Contact() {
-  const [errors, setErrors] = useState<FieldErrors>({});
-  const [submitting, setSubmitting] = useState(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
