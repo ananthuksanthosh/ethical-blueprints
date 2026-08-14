@@ -5,7 +5,8 @@ export type Theme = "dark" | "light";
 const STORAGE_KEY = "portfolio-theme";
 
 /** Inline script string: applies the stored/system theme before paint (no flash). */
-export const themeInitScript = `(function(){try{var s=localStorage.getItem("${STORAGE_KEY}");var m=window.matchMedia("(prefers-color-scheme: light)").matches;var t=s==="light"||s==="dark"?s:(m?"light":"dark");document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.style.colorScheme=t;}catch(e){document.documentElement.classList.add("dark");}})();`;
+/** Dark is the default; a stored user choice always wins. */
+export const themeInitScript = `(function(){try{var s=localStorage.getItem("${STORAGE_KEY}");var t=(s==="light"||s==="dark")?s:"dark";document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.style.colorScheme=t;}catch(e){document.documentElement.classList.add("dark");}})();`;
 
 export function useTheme() {
   const [theme, setThemeState] = useState<Theme>("dark");
