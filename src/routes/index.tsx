@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LoadingScreen } from "@/components/portfolio/LoadingScreen";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { Hero } from "@/components/portfolio/Hero";
 import { Stats } from "@/components/portfolio/Stats";
@@ -64,7 +63,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-dvh bg-background">
-      <LoadingScreen />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
