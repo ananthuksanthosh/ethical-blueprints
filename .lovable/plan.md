@@ -1,6 +1,6 @@
 # Premium Cybersecurity Portfolio — Ananthu K Santhosh
 
-A single-page, dark-first portfolio built to recruiter standards: black + electric blue, large confident typography, generous spacing, and subtle security-themed motion. No invented facts anywhere — everything unknown ships as a clearly marked editable placeholder.
+A single-page, dark-first portfolio built to recruiter standards: black + electric blue, large confident typography, generous spacing, and subtle security-themed motion. Tone target: roughly 80% professional/corporate, 20% cybersecurity aesthetic — never a "hacker site". Positioning throughout is a technically serious BCA student and aspiring cybersecurity professional with genuine hands-on academic and lab experience, never a senior security career. No invented facts anywhere — everything unknown ships as a clearly marked editable placeholder. No custom cursor, no Matrix rain, no hooded-hacker or skull imagery, no fake hacking terminal, no GitHub contribution graph, no screenshots in labs.
 
 ## Page flow
 
@@ -22,7 +22,7 @@ Certifications is scaffolded (data file + section component ready) but not rende
 
 **Skills** — five grouped panels (Cybersecurity, Security Tools, Cloud, Development, DevOps) as tag clusters with hover lift. No percentage bars, no logo wall.
 
-**Featured Projects** — six cards from a typed data model: MEDOX, Metasploitable2 ethical hacking lab, IoT security lab, AWS cloud security labs, CloudTrail + Splunk monitoring, SYN Recon (marked as an editable placeholder description). Category filter (All / Cybersecurity / Cloud / IoT / Development / DevOps), a discreet search across title, description, tech, and category, animated re-layout. Cards with no repo show "Documentation coming soon" instead of a link. Card shape already supports a future detail page/modal.
+**Featured Projects** — six cards from a typed data model: MEDOX, Metasploitable2 ethical hacking lab (explicitly labelled a controlled lab environment), IoT security lab, AWS cloud security labs, CloudTrail + Splunk monitoring, SYN Recon (editable placeholder description). Each card: name, category, short description, technology tags, GitHub when one exists, live demo when one exists, and a "View details" action. Category filter (All / Cybersecurity / Cloud / IoT / Development / DevOps), a deliberately understated search across name, description, technology, and category, subtle animated re-layout. Cards with no repo or demo show "Documentation coming soon" — never a fabricated URL. Card shape already supports a future detail page/modal.
 
 **Security Research & Labs** — concise recruiter-friendly lab cards: title, category, summary, tools, concepts. No screenshots, no long write-ups.
 
