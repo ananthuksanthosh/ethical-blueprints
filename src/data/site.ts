@@ -16,8 +16,8 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/ananthu-k-santhosh",
   },
 
-  /** TODO: add the contact email here (e.g. "you@example.com"). Empty = hidden. */
-  email: "",
+  /** Public contact email. */
+  email: "ananthuksanthosh2006@gmail.com",
 
   /**
    * TODO: place resume.pdf in /public and set this to "/resume.pdf".
