@@ -30,6 +30,6 @@ export default defineConfig({
         ]
       : undefined,
 
-    base: isGitHubPages ? "/ethical-blueprints/" : "/",
+    base: isGitHubPages ? "/portfolio/" : "/",
   },
 });
