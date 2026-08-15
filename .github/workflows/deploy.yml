@@ -33,42 +33,19 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Show build output
+      - name: Prepare static files
         run: |
-          echo "================================"
-          echo "ROOT DIRECTORY"
-          echo "================================"
-          ls -la
+          mkdir -p deploy
+          cp -r .output/public/. deploy/
 
-          echo ""
-          echo "================================"
-          echo "DIST DIRECTORY"
-          echo "================================"
-          if [ -d "dist" ]; then
-            find dist -maxdepth 3 -type f | head -100
-          else
-            echo "dist directory does not exist"
+          if [ ! -f deploy/index.html ]; then
+            echo "ERROR: index.html was not generated."
+            echo "Contents of .output/public:"
+            find .output/public -maxdepth 3 -type f
+            exit 1
           fi
 
-          echo ""
-          echo "================================"
-          echo ".OUTPUT DIRECTORY"
-          echo "================================"
-          if [ -d ".output" ]; then
-            find .output -maxdepth 3 -type f | head -100
-          else
-            echo ".output directory does not exist"
-          fi
-
-          echo ""
-          echo "================================"
-          echo "DIST/CLIENT DIRECTORY"
-          echo "================================"
-          if [ -d "dist/client" ]; then
-            find dist/client -maxdepth 3 -type f | head -100
-          else
-            echo "dist/client directory does not exist"
-          fi
+          touch deploy/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -76,7 +53,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/client
+          path: ./deploy
 
   deploy:
     environment:
