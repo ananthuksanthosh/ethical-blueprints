@@ -33,6 +33,43 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Show build output
+        run: |
+          echo "================================"
+          echo "ROOT DIRECTORY"
+          echo "================================"
+          ls -la
+
+          echo ""
+          echo "================================"
+          echo "DIST DIRECTORY"
+          echo "================================"
+          if [ -d "dist" ]; then
+            find dist -maxdepth 3 -type f | head -100
+          else
+            echo "dist directory does not exist"
+          fi
+
+          echo ""
+          echo "================================"
+          echo ".OUTPUT DIRECTORY"
+          echo "================================"
+          if [ -d ".output" ]; then
+            find .output -maxdepth 3 -type f | head -100
+          else
+            echo ".output directory does not exist"
+          fi
+
+          echo ""
+          echo "================================"
+          echo "DIST/CLIENT DIRECTORY"
+          echo "================================"
+          if [ -d "dist/client" ]; then
+            find dist/client -maxdepth 3 -type f | head -100
+          else
+            echo "dist/client directory does not exist"
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
