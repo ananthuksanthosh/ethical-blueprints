@@ -1,15 +1,35 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { nitro } from "nitro/vite";
 
-const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
 
 export default defineConfig({
-  nitro: isGitHubActions
-    ? {
-        preset: "node-server",
-      }
-    : undefined,
+  tanstackStart: {
+    server: {
+      entry: "server",
+    },
+
+    spa: isGitHubPages
+      ? {
+          enabled: true,
+          prerender: {
+            outputPath: "/index.html",
+            crawlLinks: false,
+            retryCount: 2,
+          },
+        }
+      : undefined,
+  },
 
   vite: {
-    base: isGitHubActions ? "/ethical-blueprints/" : "/",
+    plugins: isGitHubPages
+      ? [
+          nitro({
+            preset: "node-server",
+          }),
+        ]
+      : undefined,
+
+    base: isGitHubPages ? "/ethical-blueprints/" : "/",
   },
 });
