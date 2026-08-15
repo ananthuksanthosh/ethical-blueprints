@@ -33,19 +33,20 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prepare static files
+      - name: Check generated files
         run: |
-          mkdir -p deploy
-          cp -r .output/public/. deploy/
+          echo "=== .output/public ==="
+          find .output/public -maxdepth 3 -type f | sort
 
-          if [ ! -f deploy/index.html ]; then
+          echo ""
+          echo "=== Checking index.html ==="
+
+          if [ ! -f ".output/public/index.html" ]; then
             echo "ERROR: index.html was not generated."
-            echo "Contents of .output/public:"
-            find .output/public -maxdepth 3 -type f
             exit 1
           fi
 
-          touch deploy/.nojekyll
+          echo "index.html found!"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -53,7 +54,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./deploy
+          path: ./.output/public
 
   deploy:
     environment:
