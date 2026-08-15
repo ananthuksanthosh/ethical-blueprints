@@ -9,21 +9,6 @@ export default defineConfig({
       }
     : undefined,
 
-  tanstackStart: {
-    server: {
-      entry: "server",
-    },
-
-    prerender: isGitHubActions
-      ? {
-          enabled: true,
-          crawlLinks: true,
-          autoSubfolderIndex: true,
-          failOnError: true,
-        }
-      : undefined,
-  },
-
   vite: {
     base: isGitHubActions ? "/ethical-blueprints/" : "/",
   },
